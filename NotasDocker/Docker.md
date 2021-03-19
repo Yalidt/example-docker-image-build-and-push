@@ -49,7 +49,36 @@ Ejemplos:<br>
 `ENV LC_ALL C.UTF-8` <br>
 
 
+## ¿Como correr una imagen?
+### 1. Bajar o construir la imagen
 
+1.1 *Bajar la imagen*
+
+Esto se tendrá que hacer desde DockerHub que es un contenedor de imágenes aprobadas, usualmente cuando construímos una imagen nos basamos en estan imagenes ya trabajadas e incluímos lo que necesaitamos (las personalizamos). Se puede bajar directamente la imágen desde el DockerHub, por ejemplo la imagen de este repositorio ya esta alojada en DockerHub:
+
+`docker pull yalidt/pkg:0.1`
+
+Para listar imágenes en la terminal
+
+`docker images`
+
+1.2 Contruir la imagen
+
+Aqui se debe tener el dockerfile para posteriormente construir la imagen
+
+`docker build --tag hello-world`
+
+### 2. Levantar el contenedor
+
+`docker run --rm --name micontenedor -d -p 8888:8888 yalidt/pkg:0.1` 
+
++ Las opciones --name para el nombre que es uno que tu quieras poner al contenedor
++ -d es para que corra on the background el contenedor
++  Los puertos que hay que exponer son el 8888 que es donde sirve el jupyterlab (y es el 8888 que está a la derecha de :) , se puede modificar el 8888 que está a la izquierda del : por ejemplo -p 9090:8888
+
+### 3. Para un contenedor
+
+`docker stop <nombre_del_contenedor>`
 
 
 

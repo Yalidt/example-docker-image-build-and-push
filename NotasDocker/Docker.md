@@ -76,6 +76,11 @@ Aqui se debe tener el dockerfile para posteriormente construir la imagen
 + -d es para que corra on the background el contenedor
 +  Los puertos que hay que exponer son el 8888 que es donde sirve el jupyterlab (y es el 8888 que está a la derecha de :) , se puede modificar el 8888 que está a la izquierda del : por ejemplo -p 9090:8888
 
+Otra opción sin el flag -d para que se ejecute en la terminal:
+
+`docker run --rm --name micontenedor -p 8888:8888 yalidt/pkg:0.1` 
+
+
 ### 3. Para un contenedor
 
 `docker stop <nombre_del_contenedor>`

@@ -1,4 +1,4 @@
-FROM palmoreck/jupyterlab_binder:1.1.0
+FROM yalidt/pkg:0.1
 ARG NB_USER=jovyan
 ARG NB_UID=1000
 ENV USER ${NB_USER}
@@ -7,8 +7,6 @@ ENV HOME /home/${NB_USER}
 COPY . ${HOME}
 USER root
 RUN chown -R ${NB_UID} ${HOME}
-
-RUN apt-get update && apt-get install -y $DEB_PACKAGES && pip3 install --upgrade pip
 
 USER ${NB_USER}
 

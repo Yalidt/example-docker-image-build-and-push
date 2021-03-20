@@ -12,7 +12,6 @@ RUN apt-get update && export DEBIAN_FRONTEND=noninteractive && echo "America/Mex
 RUN apt-get update && apt-get install -y $DEB_PACKAGES && pip3 install --upgrade pip
 RUN git clone https://github.com/optimizacion-2-2021-1-gh-classroom/practica-1-segunda-parte-yefovar.git
 RUN pip install numpy
-RUN pip install src/
 
 
 RUN groupadd miuser

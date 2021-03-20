@@ -7,6 +7,7 @@ ENV HOME /home/${NB_USER}
 COPY . ${HOME}
 USER root
 RUN chown -R ${NB_UID} ${HOME}
+RUN echo 'miuser:qwerty' | chpasswd
 
 USER ${NB_USER}
 

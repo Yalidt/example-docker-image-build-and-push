@@ -10,6 +10,6 @@ RUN chown -R ${NB_UID} ${HOME}
 
 USER ${NB_USER}
 
-RUN ["sudo", "chmod", "+x", "/home/jovyan/run.sh"]
+RUN ["sudo", "chmod", "+x", "/home/miuser/run.sh"]
 
 ENTRYPOINT ["/home/miuser/run.sh"]

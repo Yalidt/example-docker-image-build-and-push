@@ -1,5 +1,5 @@
-FROM yalidt/pkg:0.1
-ARG NB_USER=miuser
+FROM palmoreck/jupyterlab_binder:1.1.0
+ARG NB_USER=jovyan
 ARG NB_UID=1000
 ENV USER ${NB_USER}
 ENV NB_UID ${NB_UID}
@@ -7,10 +7,9 @@ ENV HOME /home/${NB_USER}
 COPY . ${HOME}
 USER root
 RUN chown -R ${NB_UID} ${HOME}
-RUN echo 'miuser:qwerty' | chpasswd
 
 USER ${NB_USER}
 
-RUN ["sudo", "chmod", "+x", "/home/miuser/run.sh"]
+RUN ["sudo", "chmod", "+x", "/home/jovyan/run.sh"]
 
-ENTRYPOINT ["/home/miuser/run.sh"]
+ENTRYPOINT ["/home/jovyan/run.sh"]

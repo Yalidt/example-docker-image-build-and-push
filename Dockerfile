@@ -1,4 +1,4 @@
-FROM palmoreck/jupyterlab_binder:1.1.0
+FROM ubuntu:bionic
 ARG NB_USER=jovyan
 ARG NB_UID=1000
 ENV USER ${NB_USER}

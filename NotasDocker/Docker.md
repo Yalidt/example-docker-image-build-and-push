@@ -87,26 +87,26 @@ Otra opción sin el flag -d para que se ejecute en la terminal:
 
 ### Ejemplo Dockerfile:
 
-`FROM ubuntu:bionic`
+`FROM ubuntu:bionic` <br>
 
-`ENV JUPYTERLAB_VERSION 3.0.0`
-`ENV LANG C.UTF-8`
-`ENV LC_ALL C.UTF-8`
+`ENV JUPYTERLAB_VERSION 3.0.0`<br>
+`ENV LANG C.UTF-8`<br>
+`ENV LC_ALL C.UTF-8`<br>
 
-`ENV DEB_PACKAGES="sudo nano less git python3-dev python3-pip python3-setuptools nodejs"`
+`ENV DEB_PACKAGES="sudo nano less git python3-dev python3-pip python3-setuptools nodejs"`<br>
 
-`RUN apt-get update && export DEBIAN_FRONTEND=noninteractive && echo "America/Mexico_City" > /etc/timezone && apt-get install -y tzdata`
+`RUN apt-get update && export DEBIAN_FRONTEND=noninteractive && echo "America/Mexico_City" > /etc/timezone && apt-get install -y tzdata`<br>
 
-`RUN apt-get update && apt-get install -y $DEB_PACKAGES && pip3 install --upgrade pip`
-`RUN pip install numpy`
+`RUN apt-get update && apt-get install -y $DEB_PACKAGES && pip3 install --upgrade pip`<br>
+`RUN pip install numpy`<br>
 
-`RUN groupadd miuser`
-`RUN useradd miuser -g miuser -m -s /bin/bash`
-`RUN echo 'miuser ALL=(ALL:ALL) NOPASSWD:ALL' | (EDITOR='tee -a' visudo)`
-`RUN echo 'miuser:qwerty' | chpasswd`
-`RUN pip3 install jupyter jupyterlab==$JUPYTERLAB_VERSION --upgrade`
-`USER miuser`
-`RUN jupyter notebook --generate-config && sed -i "s/#c.NotebookApp.password = .`
+`RUN groupadd miuser`<br>
+`RUN useradd miuser -g miuser -m -s /bin/bash`<br>
+`RUN echo 'miuser ALL=(ALL:ALL) NOPASSWD:ALL' | (EDITOR='tee -a' visudo)`<br>
+`RUN echo 'miuser:qwerty' | chpasswd`<br>
+`RUN pip3 install jupyter jupyterlab==$JUPYTERLAB_VERSION --upgrade`<br>
+`USER miuser`<br>
+`RUN jupyter notebook --generate-config && sed -i "s/#c.NotebookApp.password = .`<br>
 
 ¿Que hace este Dockerfile?
 + Tiene como ambiente jupyterlab

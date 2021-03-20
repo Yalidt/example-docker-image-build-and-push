@@ -32,7 +32,6 @@ USER root
 RUN chown -R ${NB_UID} ${HOME}
 
 RUN apt-get update && apt-get install -y $DEB_PACKAGES && pip3 install --upgrade pip
-RUN pip install scr/
 
 USER ${NB_USER}
 

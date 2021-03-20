@@ -1,4 +1,4 @@
-FROM palmoreck/jupyterlab_binder:1.1.0
+FROM yalidt/pkg:0.1
 ARG NB_USER=miuser
 ARG NB_UID=1000
 ENV USER ${NB_USER}

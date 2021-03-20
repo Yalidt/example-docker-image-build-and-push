@@ -1,3 +1,4 @@
+FROM palmoreck/jupyterlab_binder:1.1.0
 ARG NB_USER=miuser
 ARG NB_UID=1000
 ENV USER ${NB_USER}
@@ -11,4 +12,4 @@ USER ${NB_USER}
 
 RUN ["sudo", "chmod", "+x", "/home/jovyan/run.sh"]
 
-ENTRYPOINT ["/home/jovyan/run.sh"]
+ENTRYPOINT ["/home/miuser/run.sh"]

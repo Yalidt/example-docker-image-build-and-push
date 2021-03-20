@@ -62,7 +62,7 @@ Para listar imágenes en la terminal
 
 `docker images`
 
-1.2 Contruir la imagen
+1.2 Construir la imagen
 
 Aqui se debe tener el dockerfile para posteriormente construir la imagen
 
@@ -84,6 +84,34 @@ Otra opción sin el flag -d para que se ejecute en la terminal:
 ### 3. Para un contenedor
 
 `docker stop <nombre_del_contenedor>`
+
+### Ejemplo Dockerfile:
+
+`FROM ubuntu:bionic`
+
+`ENV JUPYTERLAB_VERSION 3.0.0`
+`ENV LANG C.UTF-8`
+`ENV LC_ALL C.UTF-8`
+
+`ENV DEB_PACKAGES="sudo nano less git python3-dev python3-pip python3-setuptools nodejs"`
+
+`RUN apt-get update && export DEBIAN_FRONTEND=noninteractive && echo "America/Mexico_City" > /etc/timezone && apt-get install -y tzdata`
+
+`RUN apt-get update && apt-get install -y $DEB_PACKAGES && pip3 install --upgrade pip`
+`RUN pip install numpy`
+
+`RUN groupadd miuser`
+`RUN useradd miuser -g miuser -m -s /bin/bash`
+`RUN echo 'miuser ALL=(ALL:ALL) NOPASSWD:ALL' | (EDITOR='tee -a' visudo)`
+`RUN echo 'miuser:qwerty' | chpasswd`
+`RUN pip3 install jupyter jupyterlab==$JUPYTERLAB_VERSION --upgrade`
+`USER miuser`
+`RUN jupyter notebook --generate-config && sed -i "s/#c.NotebookApp.password = .`
+
+¿Que hace este Dockerfile?
++ Tiene como ambiente jupyterlab
++ Instala pyhton 3
++ Logra acceso al jupyterlab por medio del localhost:8888
 
 
 

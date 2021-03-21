@@ -22,22 +22,3 @@ RUN pip3 install jupyter jupyterlab==$JUPYTERLAB_VERSION --upgrade
 USER miuser
 RUN jupyter notebook --generate-config && sed -i "s/#c.NotebookApp.password = .*/c.NotebookApp.password = u'sha1:115e429a919f:21911277af52f3e7a8b59380804140d9ef3e2380'/" /home/miuser/.jupyter/jupyter_notebook_config.py
 ENTRYPOINT ["/usr/local/bin/jupyter", "lab", "--ip=0.0.0.0", "--no-browser"]
-
-#FROM palmoreck/jupyterlab_binder:1.1.0
-#ARG NB_USER=jovyan
-#ARG NB_UID=1000
-#ENV USER ${NB_USER}
-#ENV NB_UID ${NB_UID}
-#ENV HOME /home/${NB_USER}
-#COPY . ${HOME}
-#USER root
-#RUN chown -R ${NB_UID} ${HOME}
-
-#RUN apt-get update && apt-get install -y $DEB_PACKAGES && pip3 install --upgrade pip
-
-#USER ${NB_USER}
-
-#RUN ["sudo", "chmod", "+x", "/home/jovyan/run.sh"]
-
-#ENTRYPOINT ["/home/jovyan/run.sh"]
-
